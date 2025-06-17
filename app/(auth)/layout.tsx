@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import Image from "next/image";
 
 const Layout = ({ children }: { children: ReactNode }) => {
