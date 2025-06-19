@@ -15,6 +15,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import FileUploader from "./FileUploader";
 import { Button } from "./ui/button";
+import { signOutUser } from "@/lib/actions/user.actions";
 
 interface Props {
   ownerId: string;
@@ -46,7 +47,7 @@ const MobileNavigation = ({ fullName, email, avatar }: Props) => {
             height={30}
           />
         </SheetTrigger>
-        <SheetContent className="shad-sheet h-screen px-3">
+        <SheetContent className="shad-sheet h-screen bg-white px-3">
           <SheetTitle>
             <div className="header-user">
               <Image
@@ -95,7 +96,7 @@ const MobileNavigation = ({ fullName, email, avatar }: Props) => {
             <Button
               type="submit"
               className="mobile-sign-out-button"
-              onClick={() => {}}
+              onClick={async () => await signOutUser()}
             >
               <Image
                 src="assets/icons/logout.svg"
