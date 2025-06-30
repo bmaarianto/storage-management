@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Models } from "node-appwrite";
-import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/lib/actions/user.actions";
 
 import ActionDropdown from "@/components/ActionDropdown";
 import { Chart } from "@/components/Chart";
@@ -12,14 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { getFiles, getTotalSpaceUsed } from "@/lib/actions/file.actions";
 import { convertFileSize, getUsageSummary } from "@/lib/utils";
 
-export const dynamic = "force-dynamic";
-
 const Dashboard = async () => {
-  const currentUser = await getCurrentUser();
-  if (!currentUser) {
-    redirect("/sign-in");
-  }
-
   // Parallel requests
   const [files, totalSpace] = await Promise.all([
     getFiles({ types: [], limit: 10 }),
